@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap");
+
+.board {
+  margin: auto auto;
+  height: 95vh;
+  max-width: 750px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: "Londrina Solid", cursive;
+  background-color: #888;
+  background-image: url("https://www.mariomayhem.com/fun/smb_level_editor/images/overworld_bg.png");
+  background-size: 100% 100%;
+  border-radius: 5%;
+  margin-left: 340px;
+  letter-spacing: 1px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: -40px;
+}
+
+.messages {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  margin: 0;
+}
+
+.startButton {
+  display: center;
+  background-color: #d10d0d;
+  margin-bottom: 5px;
+  padding: 5px;
+  font-family: "Londrina Solid", cursive;
+  font-size: 24px;
+  color: #fff;
+  border-radius: 15px;
+  opacity: 0.8;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.startButton:hover {
+  opacity: 1;
+  box-shadow: 3px 3px #363636;
+}
+
+.startButton:focus {
+  outline: none;
+}
+
+.startButton:active {
+  transform: scale(0.9, 0.9);
+}
+
+.mainBody {
+  max-width: 750px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.message {
+  font-size: 20px;
+  font-family: "Londrina Solid", cursive;
+}
+
+.restartButton {
+  height: 40px;
+  width: auto;
+  margin-left: 30px;
+  margin-top: 10px;
+  opacity: 0.8;
+  font-family: "Londrina Solid", cursive;
+  font-size: 24px;
+  color: #fff;
+  background-color: #d10d0d;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.restartButton:hover {
+  opacity: 1;
+  box-shadow: 3px 3px #363636;
+}
+
+.restartButton:focus {
+  outline: none;
+}
+
+.restartButton:active {
+  transform: scale(0.9, 0.9);
+}
+
+@keyframes spinIn {
+  0% {
+    transform: scale(0, 0);
+  }
+  50% {
+    transform: scale(1.5, 1.5);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes spinOut {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(0, 0);
+  }
+}
