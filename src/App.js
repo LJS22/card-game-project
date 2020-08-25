@@ -15,6 +15,7 @@ import Score from "./components/Score";
 import Confetti from "react-dom-confetti";
 import "react-responsive-modal/styles.css";
 import Modals from "./components/Modal";
+import Leaderboard from "./components/Leaderboard";
 
 class App extends Component {
   state = {
@@ -46,6 +47,9 @@ class App extends Component {
     openWinModal: false,
     openLoseModal: false,
     hasGameStarted: false,
+    playersNames: null,
+    playersScores: null,
+    playersTimes: null,
   };
 
   intervalID = 0;
@@ -158,6 +162,7 @@ class App extends Component {
     } = this.state;
     return (
       <section className="board">
+        <Leaderboard />
         <header className="header">
           <div className="title">
             <h1>MEMORY GAME</h1>
@@ -173,6 +178,7 @@ class App extends Component {
           open={openWinModal}
           onClose={this.restartHandler}
           image={WinGif}
+          form={openWinModal}
         />
         <Modals
           open={openLoseModal}

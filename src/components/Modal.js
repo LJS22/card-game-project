@@ -2,6 +2,7 @@ import React from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import "../styles/Modal.css";
+import Form from "./Form";
 
 const Modals = (props) => {
   return (
@@ -24,6 +25,7 @@ const Modals = (props) => {
         }}
       >
         <img className="modalImg" src={props.image} alt="" />
+        {props.form ? <Form /> : null}
       </Modal>
     </div>
   );

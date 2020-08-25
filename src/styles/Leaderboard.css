@@ -1,0 +1,10 @@
+.boardMain {
+  position: absolute;
+  height: 500px;
+  width: 500px;
+  text-align: center;
+  background-color: black;
+  color: #fff;
+  font-size: 20px;
+  z-index: 3;
+}
