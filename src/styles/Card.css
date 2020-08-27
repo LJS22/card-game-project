@@ -28,3 +28,8 @@
   height: 100%;
   width: 90%;
 }
+
+.message {
+  font-size: 20px;
+  font-family: "Londrina Solid", cursive;
+}

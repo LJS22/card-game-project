@@ -1,5 +1,46 @@
 @import url("https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap");
 
-form {
+.formTitle {
+  color: black;
   font-family: "Londrina Solid", cursive;
+}
+
+form input {
+  height: 40px;
+  width: 350px;
+  border: none;
+  border-radius: 15px;
+  background-color: #888;
+  font-size: 20px;
+}
+
+form input:focus {
+  outline: none;
+}
+
+.timer {
+  color: #000;
+  font-size: 20px;
+  font-family: "Londrina Solid", cursive;
+}
+
+form button {
+  height: 40px;
+  width: auto;
+  opacity: 0.8;
+  font-family: "Londrina Solid", cursive;
+  font-size: 24px;
+  color: #fff;
+  background-color: #d10d0d;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+form button:hover {
+  opacity: 1;
+  box-shadow: 3px 3px #363636;
+}
+
+form button:active {
+  transform: scale(0.9, 0.9);
 }

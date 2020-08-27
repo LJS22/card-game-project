@@ -68,9 +68,15 @@
   flex-wrap: wrap;
 }
 
-.message {
+footer {
+  display: flex;
+  margin-right: 75px;
+}
+
+.message1 {
   font-size: 20px;
   font-family: "Londrina Solid", cursive;
+  margin-left: 30px;
 }
 
 .restartButton {

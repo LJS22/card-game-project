@@ -24,8 +24,8 @@ const Modals = (props) => {
           },
         }}
       >
-        <img className="modalImg" src={props.image} alt="" />
-        {props.form ? <Form /> : null}
+        <img src={props.image} alt=""></img>
+        {props.form ? <Form timer={props.timer} /> : null}
       </Modal>
     </div>
   );

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Card from "./components/Card";
 import "./styles/App.css";
-import WinGif from "./images/winningGif.gif";
 import LoseGif from "./images/losingGif.gif";
 import Bowser from "./images/bowser.png";
 import Mario from "./images/mario.png";
@@ -47,18 +46,17 @@ class App extends Component {
     openWinModal: false,
     openLoseModal: false,
     hasGameStarted: false,
-    playersNames: null,
-    playersScores: null,
-    playersTimes: null,
+    boardView: false,
   };
 
   intervalID = 0;
 
   startGame = () => {
     this.intervalID = setInterval(() => {
-      this.setState({ timer: this.state.timer - 1, hasGameStarted: true });
+      this.setState({ timer: this.state.timer - 1 });
       this.checkGameLost();
     }, 1000);
+    this.setState({ hasGameStarted: true });
   };
 
   flipHandler = (index) => {
@@ -80,24 +78,22 @@ class App extends Component {
   };
 
   componentDidUpdate() {
-    const { firstFlip, secondFlip, cards, hasGameStarted } = this.state;
-    if (hasGameStarted === true) {
-      if (firstFlip != null && secondFlip != null) {
-        if (cards[firstFlip].image === cards[secondFlip].image) {
-          this.increaseScore();
-          this.setState({ firstFlip: null, secondFlip: null });
-        } else if (cards[firstFlip].image !== cards[secondFlip].image) {
-          setTimeout(() => {
-            let newCards = this.state.cards;
-            cards[firstFlip].flipped = false;
-            cards[secondFlip].flipped = false;
-            this.setState({
-              cards: newCards,
-              firstFlip: null,
-              secondFlip: null,
-            });
-          }, 1000);
-        }
+    const { firstFlip, secondFlip, cards } = this.state;
+    if (firstFlip != null && secondFlip != null) {
+      if (cards[firstFlip].image === cards[secondFlip].image) {
+        this.increaseScore();
+        this.setState({ firstFlip: null, secondFlip: null });
+      } else if (cards[firstFlip].image != cards[secondFlip].image) {
+        setTimeout(() => {
+          let newCards = cards;
+          cards[firstFlip].flipped = false;
+          cards[secondFlip].flipped = false;
+          this.setState({
+            cards: newCards,
+            firstFlip: null,
+            secondFlip: null,
+          });
+        }, 1000);
       }
     }
   }
@@ -108,7 +104,6 @@ class App extends Component {
 
   decreaseTurns = () => {
     this.setState({ turns: this.state.turns - 1 });
-    console.log(this.state.turns);
     this.checkGameLost();
   };
 
@@ -150,6 +145,10 @@ class App extends Component {
     clearInterval(this.intervalID);
   };
 
+  toggleView = () => {
+    this.setState({ boardView: !this.state.boardView });
+  };
+
   render() {
     const {
       score,
@@ -159,10 +158,11 @@ class App extends Component {
       message,
       openWinModal,
       openLoseModal,
+      boardView,
     } = this.state;
     return (
       <section className="board">
-        <Leaderboard />
+        {boardView ? <Leaderboard /> : null}
         <header className="header">
           <div className="title">
             <h1>MEMORY GAME</h1>
@@ -177,8 +177,9 @@ class App extends Component {
         <Modals
           open={openWinModal}
           onClose={this.restartHandler}
-          image={WinGif}
+          image={null}
           form={openWinModal}
+          timer={timer}
         />
         <Modals
           open={openLoseModal}
@@ -200,10 +201,15 @@ class App extends Component {
             );
           })}
         </main>
-        <p className="message"> {message} </p>
-        <button className="restartButton" onClick={this.restartHandler}>
-          RESTART
-        </button>
+        <footer>
+          <button className="restartButton" onClick={this.toggleView}>
+            Leaderboard
+          </button>
+          <p className="message1">{message}</p>
+          <button className="restartButton" onClick={this.restartHandler}>
+            RESTART
+          </button>
+        </footer>
       </section>
     );
   }
