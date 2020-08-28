@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/card-game-project/static/css/main.37e3806d.chunk.css",
+    "main.js": "/card-game-project/static/js/main.20d5c702.chunk.js",
+    "main.js.map": "/card-game-project/static/js/main.20d5c702.chunk.js.map",
+    "runtime-main.js": "/card-game-project/static/js/runtime-main.553cc920.js",
+    "runtime-main.js.map": "/card-game-project/static/js/runtime-main.553cc920.js.map",
+    "static/css/2.257f4af1.chunk.css": "/card-game-project/static/css/2.257f4af1.chunk.css",
+    "static/js/2.363dfe0e.chunk.js": "/card-game-project/static/js/2.363dfe0e.chunk.js",
+    "static/js/2.363dfe0e.chunk.js.map": "/card-game-project/static/js/2.363dfe0e.chunk.js.map",
+    "index.html": "/card-game-project/index.html",
+    "precache-manifest.5f91a53bb117cc07b16895ec794efc83.js": "/card-game-project/precache-manifest.5f91a53bb117cc07b16895ec794efc83.js",
+    "service-worker.js": "/card-game-project/service-worker.js",
+    "static/css/2.257f4af1.chunk.css.map": "/card-game-project/static/css/2.257f4af1.chunk.css.map",
+    "static/css/main.37e3806d.chunk.css.map": "/card-game-project/static/css/main.37e3806d.chunk.css.map",
+    "static/js/2.363dfe0e.chunk.js.LICENSE.txt": "/card-game-project/static/js/2.363dfe0e.chunk.js.LICENSE.txt",
+    "static/media/DK.jpg": "/card-game-project/static/media/DK.6760cdce.jpg",
+    "static/media/bowser.png": "/card-game-project/static/media/bowser.b296e163.png",
+    "static/media/losingGif.gif": "/card-game-project/static/media/losingGif.074f465e.gif",
+    "static/media/luigi.jpg": "/card-game-project/static/media/luigi.a782540d.jpg",
+    "static/media/mario.png": "/card-game-project/static/media/mario.e8bbb719.png",
+    "static/media/peach.jpg": "/card-game-project/static/media/peach.2d74ed27.jpg",
+    "static/media/toad.jpg": "/card-game-project/static/media/toad.99e77606.jpg",
+    "static/media/wario.jpg": "/card-game-project/static/media/wario.3040aa08.jpg",
+    "static/media/yoshi.jpg": "/card-game-project/static/media/yoshi.6cd29b98.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.553cc920.js",
+    "static/css/2.257f4af1.chunk.css",
+    "static/js/2.363dfe0e.chunk.js",
+    "static/css/main.37e3806d.chunk.css",
+    "static/js/main.20d5c702.chunk.js"
+  ]
+}
