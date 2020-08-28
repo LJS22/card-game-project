@@ -7,7 +7,7 @@ class Leaderboard extends Component {
   };
 
   componentDidMount = async () => {
-    await fetch("http://localhost:4500/cardgameleaderboard/v1/allplayers")
+    await fetch("https://git.heroku.com/card-game-rest-api/allplayers.git")
       .then((response) => response.json())
       .then((data) => this.manipulateData(data));
   };

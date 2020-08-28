@@ -17,7 +17,7 @@ class Form extends React.Component {
 
   sendData = async (e) => {
     const response = await fetch(
-      "http://localhost:4500/cardgameleaderboard/v1/players",
+      "https://git.heroku.com/card-game-rest-api/players.git",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
