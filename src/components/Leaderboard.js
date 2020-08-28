@@ -9,9 +9,7 @@ class Leaderboard extends Component {
   componentDidMount = async () => {
     await fetch("http://localhost:4500/cardgameleaderboard/v1/allplayers")
       .then((response) => response.json())
-      .then((data) => {
-        this.manipulateData(data);
-      });
+      .then((data) => this.manipulateData(data));
   };
 
   manipulateData = (data) => {
