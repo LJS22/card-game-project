@@ -42,7 +42,6 @@ class Form extends React.Component {
           <input
             type="text"
             placeholder="Player Name"
-            name="username"
             onChange={this.updateUsername}
           ></input>
           <p className="timer">Your Time: {this.state.time}s</p>

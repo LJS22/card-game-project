@@ -20,22 +20,22 @@ class App extends Component {
   state = {
     message: "Match the cards to win the game",
     cards: [
-      { flipped: false, image: Luigi },
-      { flipped: false, image: Toad },
-      { flipped: false, image: Bowser },
-      { flipped: false, image: Yoshi },
-      { flipped: false, image: Peach },
-      { flipped: false, image: Wario },
-      { flipped: false, image: Bowser },
-      { flipped: false, image: Mario },
-      { flipped: false, image: DK },
-      { flipped: false, image: Mario },
-      { flipped: false, image: Yoshi },
-      { flipped: false, image: Wario },
-      { flipped: false, image: Luigi },
-      { flipped: false, image: Peach },
-      { flipped: false, image: Toad },
-      { flipped: false, image: DK },
+      { flipped: false, image: Luigi, id: 1 },
+      { flipped: false, image: Toad, id: 2 },
+      { flipped: false, image: Bowser, id: 3 },
+      { flipped: false, image: Yoshi, id: 4 },
+      { flipped: false, image: Peach, id: 5 },
+      { flipped: false, image: Wario, id: 6 },
+      { flipped: false, image: Bowser, id: 7 },
+      { flipped: false, image: Mario, id: 8 },
+      { flipped: false, image: DK, id: 9 },
+      { flipped: false, image: Mario, id: 10 },
+      { flipped: false, image: Yoshi, id: 11 },
+      { flipped: false, image: Wario, id: 12 },
+      { flipped: false, image: Luigi, id: 13 },
+      { flipped: false, image: Peach, id: 14 },
+      { flipped: false, image: Toad, id: 15 },
+      { flipped: false, image: DK, id: 16 },
     ],
     firstFlip: null,
     secondFlip: null,
@@ -59,44 +59,56 @@ class App extends Component {
     this.setState({ hasGameStarted: true });
   };
 
-  flipHandler = (index) => {
-    const { firstFlip, secondFlip, hasGameStarted } = this.state;
-    if (hasGameStarted === true) {
-      if (firstFlip == null) {
-        this.decreaseTurns();
-        let newCards = this.state.cards;
-        newCards[index].flipped = true;
-        this.setState({ cards: newCards, firstFlip: index });
-      } else if (secondFlip == null) {
-        this.decreaseTurns();
-        let newCards = this.state.cards;
-        newCards[index].flipped = true;
-        this.setState({ cards: newCards, secondFlip: index });
-      }
-    }
-    this.checkGameWon();
-  };
+  handleSelect = (index) => {
+    const { cards, firstFlip, secondFlip, hasGameStarted } = this.state;
 
-  componentDidUpdate() {
-    const { firstFlip, secondFlip, cards } = this.state;
-    if (firstFlip != null && secondFlip != null) {
-      if (cards[firstFlip].image === cards[secondFlip].image) {
-        this.increaseScore();
-        this.setState({ firstFlip: null, secondFlip: null });
-      } else if (cards[firstFlip].image != cards[secondFlip].image) {
+    let newCards = cards;
+    let currentCard = newCards[index];
+    if (hasGameStarted == true) {
+      if (firstFlip == null && secondFlip == null && currentCard.flipped) {
+        // Check that the selected card isn't already flipped
+        this.decreaseTurns();
+        return;
+      } else if (firstFlip == null && secondFlip == null) {
+        // Flip the first card
+        this.decreaseTurns();
+        newCards[index].flipped = !currentCard.flipped;
+        currentCard.index = index;
+        this.setState({ cards: newCards, firstFlip: currentCard });
+      } else if (
+        currentCard.id !== firstFlip.id &&
+        firstFlip != null &&
+        secondFlip == null
+      ) {
+        // Flip the second card
+        this.decreaseTurns();
+        newCards[index].flipped = !currentCard.flipped;
+        this.setState({ cards: newCards, secondFlip: currentCard });
+
+        // Check the 2 flipped cards for a match
         setTimeout(() => {
-          let newCards = cards;
-          cards[firstFlip].flipped = false;
-          cards[secondFlip].flipped = false;
-          this.setState({
-            cards: newCards,
-            firstFlip: null,
-            secondFlip: null,
-          });
+          if (firstFlip.image !== currentCard.image) {
+            // Turn both back
+            newCards[firstFlip.index].flipped = false;
+            newCards[index].flipped = !currentCard.flipped;
+            this.setState({
+              cards: newCards,
+              secondFlip: null,
+              firstFlip: null,
+            });
+          } else {
+            // Keep them turned
+            this.increaseScore();
+            this.checkGameWon();
+            this.setState({
+              secondFlip: null,
+              firstFlip: null,
+            });
+          }
         }, 1000);
       }
     }
-  }
+  };
 
   increaseScore = () => {
     this.setState({ score: this.state.score + 1 });
@@ -194,7 +206,7 @@ class App extends Component {
                   key={index}
                   image={card.image}
                   flipped={card.flipped}
-                  click={() => this.flipHandler(index)}
+                  click={() => this.handleSelect(index)}
                 />
                 <Confetti active={this.state.active} />
               </>
